@@ -16,8 +16,17 @@ int main(){
     for (int i = 0; i < noOfScores; i++){
         double placeHolderScore;
         double placeHolderWeight;
-        cout << "Enter The Score Of Course " << i + 1 << ": ";
-        cin >> placeHolderScore;
+
+//  Input validation for scores
+        do {
+            cout << "Enter The Score Of Course " << i + 1 << ": ";
+            cin >> placeHolderScore;
+
+            if (placeHolderScore < 0 || placeHolderScore > 100) {
+                cout << "Invalid Score. Please enter a score between 0 and 100." << endl;
+            }
+        } while (placeHolderScore < 0 || placeHolderScore > 100);
+        
 //      Assigning Grades
         if (placeHolderScore >= 70 && placeHolderScore <= 100) {
             placeHolderScore = 4;
@@ -39,8 +48,16 @@ int main(){
         }
         score.push_back(placeHolderScore);
 
-        cout << "Enter The Weight Of The Course " << i + 1 << ": ";
-        cin >> placeHolderWeight;
+        // Input validation for weights
+        do {
+            cout << "Enter The Weight Of The Course " << i + 1 << ": ";
+            cin >> placeHolderWeight;
+
+            if (placeHolderWeight < 0) {
+                cout << "Invalid Weight. Please enter a non-negative weight." << endl;
+            }
+        } while (placeHolderWeight < 0);
+
         weight.push_back(placeHolderWeight);
     }
 
